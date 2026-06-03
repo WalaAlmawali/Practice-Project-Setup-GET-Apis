@@ -41,13 +41,24 @@ public class BookController {
 
     // search by name
 
-    @GetMapping(" /find-by-name")
+    @GetMapping("/find-by-name")
     public Book findByName(@RequestParam String name) {
         for (Book book : books) {
-            if (book.getName() == name) {
+            if (book.getName().equalsIgnoreCase(name)) {
                 return book;
             }
         }
         return null;
+    }
+
+    // search message
+    @GetMapping("/search-msg")
+    public String searchMessage(@RequestParam int id) {
+        for (Book book : books) {
+            if (book.getId() == id) {
+                return "Found:" + book.getName();
+            }
+        }
+        return "Sorry, the book ID is not available.";
     }
 }
