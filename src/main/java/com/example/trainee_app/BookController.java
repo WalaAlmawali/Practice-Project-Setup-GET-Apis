@@ -11,10 +11,19 @@ import java.util.List;
 public class BookController {
     private static List<Book> books = new ArrayList<>();
 
+    // add book
+
     @GetMapping("/add-book")
-    public String addBook(@RequestParam int id, @RequestParam String name){
-        Book book = new Book(id,name);
+    public String addBook(@RequestParam int id, @RequestParam String name) {
+        Book book = new Book(id, name);
 
         return "Book added successfully!";
+    }
+
+    // get all books
+
+    @GetMapping("/all-books")
+    public List<Book> getAllBooks(){
+        return  books;
     }
 }
