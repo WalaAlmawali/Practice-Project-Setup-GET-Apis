@@ -17,4 +17,21 @@ public class InventoryBook {
         this.stockCount = stockCount;
     }
 
+    // Getters
+
+    public int getBookId() {
+        return bookId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public int getStockCount() {
+        return stockCount;
+    }
 }
