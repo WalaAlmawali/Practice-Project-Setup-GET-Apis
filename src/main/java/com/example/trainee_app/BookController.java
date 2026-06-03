@@ -27,12 +27,24 @@ public class BookController {
         return books;
     }
 
-    // search function
+    // search by id
 
     @GetMapping("/find-by-id")
     public Book findById(@RequestParam int id) {
         for (Book book : books) {
             if (book.getId() == id) {
+                return book;
+            }
+        }
+        return null;
+    }
+
+    // search by name
+
+    @GetMapping(" /find-by-name")
+    public Book findByName(@RequestParam String name) {
+        for (Book book : books) {
+            if (book.getName() == name) {
                 return book;
             }
         }
