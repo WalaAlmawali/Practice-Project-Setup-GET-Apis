@@ -23,7 +23,19 @@ public class BookController {
     // get all books
 
     @GetMapping("/all-books")
-    public List<Book> getAllBooks(){
-        return  books;
+    public List<Book> getAllBooks() {
+        return books;
+    }
+
+    // search function
+
+    @GetMapping("/find-by-id")
+    public Book findById(@RequestParam int id) {
+        for (Book book : books) {
+            if (book.getId() == id) {
+                return book;
+            }
+        }
+        return null;
     }
 }
