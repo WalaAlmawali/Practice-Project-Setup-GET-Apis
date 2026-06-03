@@ -13,7 +13,7 @@ public class BookController {
 
     // add book
 
-    @GetMapping("/add-book")
+    @GetMapping("/addBook")
     public String addBook(@RequestParam int id, @RequestParam String name , @RequestParam int authorId) {
         Book book = new Book(id, name,authorId);
         books.add(book);
@@ -22,14 +22,14 @@ public class BookController {
 
     // get all books
 
-    @GetMapping("/all-books")
+    @GetMapping("/allBooks")
     public List<Book> getAllBooks() {
         return books;
     }
 
     // search by id
 
-    @GetMapping("/find-by-id")
+    @GetMapping("/findById")
     public Book findById(@RequestParam int id) {
         for (Book book : books) {
             if (book.getId() == id) {
@@ -41,7 +41,7 @@ public class BookController {
 
     // search by name
 
-    @GetMapping("/find-by-name")
+    @GetMapping("/findByName")
     public Book findByName(@RequestParam String name) {
         for (Book book : books) {
             if (book.getName().equalsIgnoreCase(name)) {
@@ -52,7 +52,7 @@ public class BookController {
     }
 
     // search message
-    @GetMapping("/search-msg")
+    @GetMapping("/searchMsg")
     public String searchMessage(@RequestParam int id) {
         for (Book book : books) {
             if (book.getId() == id) {
