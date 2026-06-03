@@ -36,5 +36,20 @@ public class BookstoreController {
         return "This book is not exist in bookstore";
     }
 
+    @GetMapping("/lowStockReport")
+    public String lowStockReport(@RequestParam int threshold) {
+
+        StringBuilder report = new StringBuilder();
+        for (InventoryBook book : catalog) {
+            if (book.getStockCount() <= threshold) {
+                report.append("Title: ").append(book.getTitle()).append(" , Stock:").append(book.getStockCount()).append("<br>");
+
+            }
+        }
+        if (report.length() == 0) {
+            return " No books currently need recording";
+        }
+        return report.toString();
+    }
 
 }
