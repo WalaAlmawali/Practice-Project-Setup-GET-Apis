@@ -80,11 +80,11 @@ public class LibraryController {
         }
 
 
-        return "Author Report\n" +
-                "ID: " + author.getId() + "\n" +
-                "Name: " + author.getName() + "\n" +
-                "Biography: " + author.getBiography() + "\n" +
-                "Books Written " + booksWritten;
+        return "Author Report <br>" +
+                "ID: " + author.getId() + "<br>" +
+                "Name: " + author.getName() + "<br>" +
+                "Biography: " + author.getBiography() + "<br>" +
+                "Books Written: " + booksWritten;
 
     }
 }
