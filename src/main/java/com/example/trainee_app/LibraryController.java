@@ -31,7 +31,7 @@ public class LibraryController {
         return authorList;
     }
 
-    @GetMapping(" /addRelationalBook")
+    @GetMapping("/addRelationalBook")
     public String addRelationalBook(@RequestParam int id, @RequestParam String name, @RequestParam int authorId) {
 
         boolean authorExist = false;
@@ -49,5 +49,42 @@ public class LibraryController {
         } else {
             return "Error: Author ID does not exist in the author registry";
         }
+    }
+
+    @GetMapping("/authorReport")
+    public String authorReport(@RequestParam String authorName) {
+
+        Author author = null;
+        for (Author a : authorList) {
+            if (a.getName().equalsIgnoreCase(authorName)) {
+                author = a;
+                break;
+            }
+        }
+        if (author == null) {
+            return "Error: Author not found";
+        }
+
+        StringBuilder booksWritten = new StringBuilder();
+        for (Book book : bookList) {
+            if (book.getAuthorId() == author.getId()) {
+                if (booksWritten.length() > 0) {
+                    booksWritten.append(", ");
+                }
+                booksWritten.append(book.getName());
+            }
+        }
+
+        if (booksWritten.length() == 0) {
+            booksWritten.append("None");
+        }
+
+
+        return "Author Report\n" +
+                "ID: " + author.getId() + "\n" +
+                "Name: " + author.getName() + "\n" +
+                "Biography: " + author.getBiography() + "\n" +
+                "Books Written " + booksWritten;
+
     }
 }
